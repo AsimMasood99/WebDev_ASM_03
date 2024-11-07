@@ -1,10 +1,12 @@
 const fs = require("fs").promises;
-const dataFile = "data.json";
+const dataFile = "./read files/data.json";
 
 // Helper function to read data from the JSON file
 async function readData() {
 	try {
 		const data = await fs.readFile(dataFile, "utf8");
+		console.log(data)
+		console.log(JSON.parse(data))
 		return JSON.parse(data);
 	} catch (err) {
 		console.error("Error reading data:", err);
@@ -62,32 +64,31 @@ async function deleteItem(id) {
 
 // Example Usage of CRUD Functions
 // immediately invoked function expression - iife
-(async () => {
-	// Create a new item
-	await createItem({
-		id: 1,
-		name: "Item 1",
-		description: "This is the first item.",
-	});
-	await createItem({
-		id: 2,
-		name: "Item 2",
-		description: "This is the second item.",
-	});
+// (async () => {
+// 	// Create a new item
+// 	await createItem({
+// 		id: 1,
+// 		name: "Item 1",
+// 		description: "This is the first item.",
+// 	});
+// 	await createItem({
+// 		id: 2,
+// 		name: "Item 2",
+// 		description: "This is the second item.",
+// 	});
 
-	await readItems();
-	// Update an item by ID
-	await updateItem(1, {
-		name: "Updated Item 1",
-		description: "Updated description.",
-	});
-	// Read all items to see the update
-	await readItems();
-	// Delete an item by ID
-	await deleteItem(2);
-	// Read all items to confirm deletion
-	await readItems();
-})();
+// 	await readItems();
+// 	// Update an item by ID
+// 	await updateItem(1, {
+// 		name: "Updated Item 1",
+// 		description: "Updated description.",
+// 	});
+// 	// Read all items to see the update
+// 	await readItems();
+// 	// Delete an item by ID
+// 	await deleteItem(2);
+// 	// Read all items to confirm deletion
+// 	await readItems();
+// })();
 
-
-module.exports = {readData}
+module.exports = { readData };
