@@ -88,3 +88,6 @@ async function deleteItem(id) {
 	// Read all items to confirm deletion
 	await readItems();
 })();
+
+
+module.exports = {readData}
